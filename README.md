@@ -9,7 +9,7 @@ The app can be run on Windows using the React Native Windows extension. Below is
 ### Prerequisites
 - [Node.js](https://nodejs.org/) 18 or later
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/) (optional, `npm` works too)
-- A Windows development machine with Visual Studio 2022 or later for building the Windows project
+- A Windows development machine with Visual Studio 2022 or later for building the Windows project. Ensure `vswhere.exe` is available in your `PATH`.
 
 ### Setup
 1. **Clone and install dependencies**
@@ -23,11 +23,16 @@ The app can be run on Windows using the React Native Windows extension. Below is
    ```bash
    npx react-native-windows-init --overwrite
    ```
-3. **Start the Metro bundler** – keep this running in its own terminal window:
+3. **Install Windows dependencies** – run the following script from an *elevated* PowerShell prompt:
+   ```powershell
+   node_modules/react-native-windows/scripts/rnw-dependencies.ps1
+   ```
+   Make sure Visual Studio 2022 or later is installed and `vswhere.exe` can be found on your `PATH`.
+4. **Start the Metro bundler** – keep this running in its own terminal window:
    ```bash
    npx react-native start
    ```
-4. **Build and run the app** in a separate terminal:
+5. **Build and run the app** in a separate terminal:
    ```bash
    npx react-native run-windows
    ```
