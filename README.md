@@ -4,32 +4,44 @@ This repository contains a minimal React Native project that can be extended wit
 
 ## Getting Started
 
+The app can be run on Windows using the React Native Windows extension. Below is a step-by-step guide for setting up the project, running it, and executing the automated tests.
+
 ### Prerequisites
 - [Node.js](https://nodejs.org/) 18 or later
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/) (optional, `npm` works too)
 - A Windows development machine with Visual Studio 2022 or later for building the Windows project
 
 ### Setup
-1. Clone this repository and install JavaScript dependencies:
+1. **Clone and install dependencies**
    ```bash
    git clone <repo-url>
    cd Pricing-Calculator-Computer-App-
    npm install
    ```
-2. Add Windows support (this generates the `windows/` folder):
+2. **Generate Windows project files** – this will create a `windows/` directory containing the native solution:
    ```bash
    npx react-native-windows-init --overwrite
    ```
-3. Start the Metro bundler:
+3. **Start the Metro bundler** – keep this running in its own terminal window:
    ```bash
    npx react-native start
    ```
-4. In another terminal, build and run the Windows app:
+4. **Build and run the app** in a separate terminal:
    ```bash
    npx react-native run-windows
    ```
 
-You should see a window open with a simple screen containing the text "Pricing Calculator".
+After compilation completes, a window should open displaying the "Pricing Calculator" heading.
+
+### Running Tests
+
+Automated tests are written using [Jest](https://jestjs.io/) and `@testing-library/react-native`. Use the following command to execute the test suite:
+
+```bash
+npm test
+```
+
+The included test verifies that the main screen renders the "Pricing Calculator" title.
 
 ## Project Structure
 - `app/App.js` – React Native component rendered on screen
