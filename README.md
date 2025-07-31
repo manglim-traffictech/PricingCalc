@@ -16,6 +16,7 @@ The app can be run on Windows using the React Native Windows extension. Below is
    ```bash
    git clone <repo-url>
    cd Pricing-Calculator-Computer-App-
+   # Run all following commands from this directory
    npm install
    ```
 2. **Generate Windows project files** – this will create a `windows/` directory containing the native solution:
