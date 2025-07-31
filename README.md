@@ -21,8 +21,10 @@ The app can be run on Windows using the React Native Windows extension. Below is
    ```
 2. **Generate Windows project files** – this will create a `windows/` directory containing the native solution:
    ```bash
-   npx react-native-windows-init --overwrite
+   npx react-native-windows-init --overwrite --name PricingCalculatorApp
    ```
+   The `--name` option uses a valid identifier and avoids build errors such as
+   `MIDL2025: syntax error expecting { near '-'` if a hyphenated package name is used.
 3. **Install Windows dependencies** – run the following script from an *elevated* PowerShell prompt:
    ```powershell
    node_modules/react-native-windows/scripts/rnw-dependencies.ps1
