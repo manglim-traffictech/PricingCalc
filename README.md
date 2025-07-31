@@ -30,8 +30,9 @@ The app can be run on Windows using the React Native Windows extension. Below is
    Make sure Visual Studio 2022 or later is installed and `vswhere.exe` can be found on your `PATH`.
 4. **Start the Metro bundler** – keep this running in its own terminal window:
    ```bash
-   npx react-native start
+   npm start
    ```
+   This uses the root `index.js` file which simply imports `app/index.js`.
 5. **Build and run the app** in a separate terminal:
    ```bash
    npx react-native run-windows
@@ -50,6 +51,7 @@ npm test
 The included test verifies that the main screen renders the "Pricing Calculator" title.
 
 ## Project Structure
+- `index.js` – default entry file importing `app/index.js`
 - `app/App.js` – React Native component rendered on screen
 - `app/index.js` – entry point that registers the app
 - `app/app.json` – application metadata
