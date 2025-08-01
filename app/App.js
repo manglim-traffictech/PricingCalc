@@ -1,7 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import InputSection from './components/InputSection';
-import PercentageTable from './components/PercentageTable';
 import theme from './theme';
 
 export default function App() {
@@ -10,8 +9,6 @@ export default function App() {
       <Text style={styles.title}>Pricing Calculator</Text>
       <View style={styles.row}>
         <InputSection />
-        <PercentageTable title="Low Buy Range" />
-        <PercentageTable title="High Buy Range" />
       </View>
     </SafeAreaView>
   );
