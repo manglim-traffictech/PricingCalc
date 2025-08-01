@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import KeypadButton from './KeypadButton';
+import BillingDisplay from './BillingDisplay';
+import { getBillingRange } from '../utils/billing';
 import theme from '../theme';
 
 export default function InputSection() {
   const [value, setValue] = useState('');
+  const [billingData, setBillingData] = useState(null);
 
   const handlePress = (key) => {
     if (key === 'Enter') {
-      console.log('Enter pressed:', value);
+      const num = parseFloat(value);
+      const result = getBillingRange(num);
+      setBillingData(result);
+      setValue('');
       return;
     }
     setValue((prev) => prev + key);
@@ -40,6 +46,7 @@ export default function InputSection() {
           </View>
         ))}
       </View>
+      {billingData && <BillingDisplay data={billingData} />}
     </View>
   );
 }
