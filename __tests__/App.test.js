@@ -21,3 +21,13 @@ test('updates input when keypad button pressed', () => {
   const input = screen.getByTestId('input-field');
   expect(input.props.value).toBe('1');
 });
+
+test('shows billing information after pressing enter', () => {
+  render(<App />);
+  const one = screen.getByText('1');
+  fireEvent.press(one);
+  const enter = screen.getByText('Enter');
+  fireEvent.press(enter);
+  const bill = screen.getByText(/Bill Amount/i);
+  expect(bill).toBeTruthy();
+});

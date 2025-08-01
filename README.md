@@ -58,3 +58,17 @@ The included test verifies that the main screen renders the "Pricing Calculator"
 - `package.json` – project configuration and dependencies
 
 Feel free to modify `App.js` to begin building your UI.
+
+## Billing and Profit Display
+
+Enter an amount using the keypad and press **Enter** to calculate billing ranges.
+The screen will show:
+
+- **Bill Amount**
+- **Pay Amount**
+- **Profit Amount**
+- **Profit Margin**
+- **High Billing Range**
+- **Low Billing Range**
+
+These values update each time you enter a new pay amount.
