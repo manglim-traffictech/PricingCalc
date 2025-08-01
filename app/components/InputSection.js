@@ -1,51 +1,48 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
-import KeypadButton from './KeypadButton';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 import BillingDisplay from './BillingDisplay';
 import { getBillingRange } from '../utils/billing';
 import theme from '../theme';
 
 export default function InputSection() {
-  const [value, setValue] = useState('');
+  const [payValue, setPayValue] = useState('');
+  const [billValue, setBillValue] = useState('');
   const [billingData, setBillingData] = useState(null);
 
-  const handlePress = (key) => {
-    if (key === 'Enter') {
-      const num = parseFloat(value);
-      const result = getBillingRange(num);
-      setBillingData(result);
-      setValue('');
+  const handleSubmit = () => {
+    const payNum = parseFloat(payValue);
+    if (isNaN(payNum)) {
       return;
     }
-    setValue((prev) => prev + key);
+    const billNum = parseFloat(billValue);
+    const result = getBillingRange(payNum);
+    setBillingData({ ...result, billAmount: isNaN(billNum) ? 0 : billNum });
   };
-
-  const rows = [
-    ['1', '2', '3'],
-    ['4', '5', '6'],
-    ['7', '8', '9'],
-    ['0', 'Enter'],
-  ];
 
   return (
     <View style={styles.container}>
+      <Text style={styles.label}>Pay Amount</Text>
       <TextInput
         style={styles.input}
-        placeholder="Enter value"
+        placeholder="Enter pay amount"
         placeholderTextColor={theme.accent}
-        value={value}
-        onChangeText={setValue}
-        testID="input-field"
+        value={payValue}
+        onChangeText={setPayValue}
+        onSubmitEditing={handleSubmit}
+        keyboardType="numeric"
+        testID="pay-input"
       />
-      <View style={styles.keypad}>
-        {rows.map((row, rowIndex) => (
-          <View key={rowIndex} style={styles.row}>
-            {row.map((label) => (
-              <KeypadButton key={label} label={label} onPress={handlePress} />
-            ))}
-          </View>
-        ))}
-      </View>
+      <Text style={styles.label}>Bill Amount</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter bill amount"
+        placeholderTextColor={theme.accent}
+        value={billValue}
+        onChangeText={setBillValue}
+        onSubmitEditing={handleSubmit}
+        keyboardType="numeric"
+        testID="bill-input"
+      />
       {billingData && <BillingDisplay data={billingData} />}
     </View>
   );
@@ -66,12 +63,9 @@ const styles = StyleSheet.create({
     color: theme.text,
     fontFamily: theme.font,
   },
-  keypad: {
-    justifyContent: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 5,
+  label: {
+    color: theme.text,
+    marginBottom: 4,
+    fontFamily: theme.font,
   },
 });

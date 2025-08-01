@@ -8,26 +8,24 @@ test('renders pricing calculator title', () => {
   expect(title).toBeTruthy();
 });
 
-test('renders keypad enter button', () => {
+test('renders pay amount label', () => {
   render(<App />);
-  const enter = screen.getByText('Enter');
-  expect(enter).toBeTruthy();
+  const label = screen.getByText('Pay Amount');
+  expect(label).toBeTruthy();
 });
 
-test('updates input when keypad button pressed', () => {
+test('updates input when typed', () => {
   render(<App />);
-  const button = screen.getByText('1');
-  fireEvent.press(button);
-  const input = screen.getByTestId('input-field');
+  const input = screen.getByTestId('pay-input');
+  fireEvent.changeText(input, '1');
   expect(input.props.value).toBe('1');
 });
 
-test('shows billing information after pressing enter', () => {
+test('shows billing information after submitting', () => {
   render(<App />);
-  const one = screen.getByText('1');
-  fireEvent.press(one);
-  const enter = screen.getByText('Enter');
-  fireEvent.press(enter);
-  const bill = screen.getByText(/Bill Amount/i);
-  expect(bill).toBeTruthy();
+  const input = screen.getByTestId('pay-input');
+  fireEvent.changeText(input, '1');
+  fireEvent(input, 'submitEditing');
+  const display = screen.getByText(/High Billing Range/i);
+  expect(display).toBeTruthy();
 });
