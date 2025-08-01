@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import theme from '../theme';
 
-export default function RangeTable({ title }) {
+export default function PercentageTable({ title }) {
   const values = [1, 5];
   for (let i = 10; i <= 100; i += 5) {
     values.push(i);
@@ -30,10 +31,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 5,
     textAlign: 'center',
+    color: theme.text,
+    fontFamily: theme.font,
   },
   list: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: theme.accent,
     borderRadius: 4,
   },
   content: {
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
   cell: {
     paddingVertical: 4,
     borderBottomWidth: 1,
-    borderColor: '#eee',
+    borderColor: '#444',
     alignItems: 'center',
   },
 });
