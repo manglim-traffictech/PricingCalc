@@ -1,0 +1,17 @@
+node_modules/
+# Logs
+npm-debug.log*
+yarn-error.log
+
+# bundler output
+/dist/
+
+# Metro
+*.bundles*
+*.map
+
+# OS files
+.DS_Store
+
+# Windows
+Thumbs.db

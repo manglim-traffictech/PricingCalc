@@ -1,12 +1,16 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import InputKeypad from './components/InputKeypad';
+import RangeTable from './components/RangeTable';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <Text style={styles.title}>Pricing Calculator</Text>
-        <Text>Welcome to the mock app!</Text>
+      <Text style={styles.title}>Pricing Calculator</Text>
+      <View style={styles.row}>
+        <InputKeypad />
+        <RangeTable title="Low Buy Range" />
+        <RangeTable title="High Buy Range" />
       </View>
     </SafeAreaView>
   );
@@ -15,12 +19,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 20,
+    textAlign: 'center',
   },
 });

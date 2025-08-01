@@ -7,3 +7,9 @@ test('renders pricing calculator title', () => {
   const title = screen.getByText('Pricing Calculator');
   expect(title).toBeTruthy();
 });
+
+test('renders keypad enter button', () => {
+  render(<App />);
+  const enter = screen.getByText('Enter');
+  expect(enter).toBeTruthy();
+});
