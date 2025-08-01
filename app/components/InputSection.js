@@ -1,27 +1,18 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
+import KeypadButton from './KeypadButton';
+import theme from '../theme';
 
-export default function InputKeypad() {
+export default function InputSection() {
   const [value, setValue] = useState('');
 
   const handlePress = (key) => {
     if (key === 'Enter') {
-      // Placeholder handler for Enter
       console.log('Enter pressed:', value);
       return;
     }
     setValue((prev) => prev + key);
   };
-
-  const renderButton = (label) => (
-    <TouchableOpacity
-      key={label}
-      style={styles.button}
-      onPress={() => handlePress(label)}
-    >
-      <Text style={styles.buttonText}>{label}</Text>
-    </TouchableOpacity>
-  );
 
   const rows = [
     ['1', '2', '3'],
@@ -34,7 +25,8 @@ export default function InputKeypad() {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Placeholder Input"
+        placeholder="Enter value"
+        placeholderTextColor={theme.accent}
         value={value}
         onChangeText={setValue}
         testID="input-field"
@@ -42,7 +34,9 @@ export default function InputKeypad() {
       <View style={styles.keypad}>
         {rows.map((row, rowIndex) => (
           <View key={rowIndex} style={styles.row}>
-            {row.map(renderButton)}
+            {row.map((label) => (
+              <KeypadButton key={label} label={label} onPress={handlePress} />
+            ))}
           </View>
         ))}
       </View>
@@ -53,13 +47,17 @@ export default function InputKeypad() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    flex: 1,
+    backgroundColor: theme.background,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: theme.accent,
     borderRadius: 4,
     padding: 8,
     marginBottom: 10,
+    color: theme.text,
+    fontFamily: theme.font,
   },
   keypad: {
     justifyContent: 'center',
@@ -68,18 +66,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 5,
-  },
-  button: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 4,
-    paddingVertical: 10,
-    alignItems: 'center',
-    marginHorizontal: 3,
-    backgroundColor: '#f2f2f2',
-  },
-  buttonText: {
-    fontSize: 16,
   },
 });
