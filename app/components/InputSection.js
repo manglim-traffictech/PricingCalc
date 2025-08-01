@@ -7,7 +7,12 @@ import theme from '../theme';
 export default function InputSection() {
   const [payValue, setPayValue] = useState('');
   const [billValue, setBillValue] = useState('');
-  const [billingData, setBillingData] = useState(null);
+  const [billingData, setBillingData] = useState({
+    payAmount: 0,
+    billAmount: 0,
+    highBilling: 0,
+    lowBilling: 0,
+  });
 
   const handleSubmit = () => {
     const payNum = parseFloat(payValue);
@@ -16,7 +21,10 @@ export default function InputSection() {
     }
     const billNum = parseFloat(billValue);
     const result = getBillingRange(payNum);
-    setBillingData({ ...result, billAmount: isNaN(billNum) ? 0 : billNum });
+    setBillingData({
+      ...result,
+      billAmount: isNaN(billNum) ? 0 : billNum,
+    });
   };
 
   return (
@@ -43,7 +51,7 @@ export default function InputSection() {
         keyboardType="numeric"
         testID="bill-input"
       />
-      {billingData && <BillingDisplay data={billingData} />}
+      <BillingDisplay data={billingData} />
     </View>
   );
 }

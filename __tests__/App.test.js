@@ -21,11 +21,8 @@ test('updates input when typed', () => {
   expect(input.props.value).toBe('1');
 });
 
-test('shows billing information after submitting', () => {
+test('shows billing information on initial render', () => {
   render(<App />);
-  const input = screen.getByTestId('pay-input');
-  fireEvent.changeText(input, '1');
-  fireEvent(input, 'submitEditing');
   const display = screen.getByText(/High Billing Range/i);
   expect(display).toBeTruthy();
 });

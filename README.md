@@ -71,4 +71,5 @@ The screen will show:
 - **High Billing Range**
 - **Low Billing Range**
 
-These values update each time you enter a new pay amount.
+These values are always visible. Before entering data they show **0.00** as a
+placeholder and update each time you submit a new pay amount.
