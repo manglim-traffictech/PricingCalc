@@ -14,12 +14,42 @@ export default function BillingDisplay({ data }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.row}>Bill Amount: {format(billAmount)}</Text>
-      <Text style={styles.row}>Pay Amount: {format(payAmount)}</Text>
-      <Text style={styles.row}>Profit Amount: {format(profitAmount)}</Text>
-      <Text style={styles.row}>Profit Margin: {format(profitMargin)}%</Text>
-      <Text style={styles.row}>High Billing Range: {format(highBilling)}</Text>
-      <Text style={styles.row}>Low Billing Range: {format(lowBilling)}</Text>
+      <View style={styles.item}>
+        <Text style={styles.label}>Bill Amount</Text>
+        <View style={styles.box}>
+          <Text style={styles.boxText}>{format(billAmount)}</Text>
+        </View>
+      </View>
+      <View style={styles.item}>
+        <Text style={styles.label}>Pay Amount</Text>
+        <View style={styles.box}>
+          <Text style={styles.boxText}>{format(payAmount)}</Text>
+        </View>
+      </View>
+      <View style={styles.item}>
+        <Text style={styles.label}>Profit Amount</Text>
+        <View style={styles.box}>
+          <Text style={styles.boxText}>{format(profitAmount)}</Text>
+        </View>
+      </View>
+      <View style={styles.item}>
+        <Text style={styles.label}>Profit Margin</Text>
+        <View style={styles.box}>
+          <Text style={styles.boxText}>{format(profitMargin)}%</Text>
+        </View>
+      </View>
+      <View style={styles.item}>
+        <Text style={styles.label}>High Billing Range</Text>
+        <View style={styles.box}>
+          <Text style={styles.boxText}>{format(highBilling)}</Text>
+        </View>
+      </View>
+      <View style={styles.item}>
+        <Text style={styles.label}>Low Billing Range</Text>
+        <View style={styles.box}>
+          <Text style={styles.boxText}>{format(lowBilling)}</Text>
+        </View>
+      </View>
     </View>
   );
 }
@@ -28,9 +58,22 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
   },
-  row: {
+  item: {
+    marginBottom: 10,
+  },
+  label: {
     color: theme.text,
     marginBottom: 4,
+    fontFamily: theme.font,
+  },
+  box: {
+    borderWidth: 1,
+    borderColor: theme.accent,
+    borderRadius: 4,
+    padding: 8,
+  },
+  boxText: {
+    color: theme.text,
     fontFamily: theme.font,
   },
 });

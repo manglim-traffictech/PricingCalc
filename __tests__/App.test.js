@@ -10,8 +10,8 @@ test('renders pricing calculator title', () => {
 
 test('renders pay amount label', () => {
   render(<App />);
-  const label = screen.getByText('Pay Amount');
-  expect(label).toBeTruthy();
+  const labels = screen.getAllByText('Pay Amount');
+  expect(labels.length).toBeGreaterThan(0);
 });
 
 test('updates input when typed', () => {
