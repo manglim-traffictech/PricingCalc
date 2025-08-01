@@ -15,18 +15,6 @@ export default function BillingDisplay({ data }) {
   return (
     <View style={styles.container}>
       <View style={styles.item}>
-        <Text style={styles.label}>Bill Amount</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(billAmount)}</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>Pay Amount</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(payAmount)}</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
         <Text style={styles.label}>Profit Amount</Text>
         <View style={styles.box}>
           <Text style={styles.boxText}>{format(profitAmount)}</Text>

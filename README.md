@@ -64,12 +64,10 @@ Feel free to modify `App.js` to begin building your UI.
 Enter an amount using the keypad and press **Enter** to calculate billing ranges.
 The screen will show:
 
-- **Bill Amount**
-- **Pay Amount**
-- **Profit Amount**
-- **Profit Margin**
-- **High Billing Range**
-- **Low Billing Range**
+ - **Profit Amount**
+ - **Profit Margin**
+ - **High Billing Range**
+ - **Low Billing Range**
 
 These values are always visible. Before entering data they show **0.00** as a
 placeholder and update each time you submit a new pay amount.
