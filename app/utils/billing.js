@@ -3,10 +3,79 @@ export function getBillingRange(payAmount) {
   if (isNaN(amount)) {
     return null;
   }
-  const highPercentage = 25;
-  const lowPercentage = 20;
-  const highBilling = parseFloat((amount / (1 - highPercentage / 100)).toFixed(2));
-  const lowBilling = parseFloat((amount / (1 - lowPercentage / 100)).toFixed(2));
+
+  const highRange = [
+    [0, 0.9275],
+    [51, 1.0475],
+    [76, 1.225],
+    [101, 0.9275],
+    [126, 0.8775],
+    [201, 0.6775],
+    [251, 0.6275],
+    [276, 0.5675],
+    [301, 0.4875],
+    [351, 0.4575],
+    [401, 0.4275],
+    [451, 0.3775],
+    [501, 0.3475],
+    [551, 0.3275],
+    [601, 0.3075],
+    [651, 0.2875],
+    [751, 0.2875],
+    [951, 0.3275],
+    [1751, 0.2975],
+    [2001, 0.2775],
+    [2701, 0.2575],
+    [3501, 0.2375],
+    [4501, 0.2075],
+    [5001, 0.1875],
+  ];
+
+  const lowRange = [
+    [0, 0.6475],
+    [51, 0.7975],
+    [76, 0.9475],
+    [101, 0.6475],
+    [126, 0.6475],
+    [201, 0.4175],
+    [251, 0.4175],
+    [276, 0.3775],
+    [301, 0.2975],
+    [351, 0.2675],
+    [401, 0.2375],
+    [451, 0.1875],
+    [501, 0.1975],
+    [551, 0.1575],
+    [601, 0.1475],
+    [651, 0.1375],
+    [751, 0.1375],
+    [951, 0.1575],
+    [1751, 0.1575],
+    [2001, 0.1275],
+    [2701, 0.1175],
+    [3501, 0.1075],
+    [4501, 0.1075],
+    [5001, 0.1075],
+  ];
+
+  const findPercent = (pay, table) => {
+    let pct = 0;
+    for (const [threshold, percent] of table) {
+      if (pay >= threshold) {
+        pct = percent;
+      } else {
+        break;
+      }
+    }
+    return pct;
+  };
+
+  const highPercentage = findPercent(amount, highRange);
+  const lowPercentage = findPercent(amount, lowRange);
+
+  const highBilling = parseFloat((amount * (1 + highPercentage)).toFixed(2));
+  const lowBilling = parseFloat((amount * (1 + lowPercentage)).toFixed(2));
+
   return {
     payAmount: amount,
     highPercentage,
