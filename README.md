@@ -1,22 +1,48 @@
 # Pricing Calc Repo
 
-This repository now contains a basic React Native application named **PLGPriceCalc**.
+This repository contains a basic React Native application located in the
+`PLGPriceCalc/` folder.
 
-## Running the App
+## Prerequisites
 
-1. Ensure you have Node.js installed.
-2. Navigate into the project directory:
+- [Node.js](https://nodejs.org/) **v16** or newer.
+- A working React Native environment. Follow the official
+  [React Native environment setup](https://reactnative.dev/docs/environment-setup)
+  instructions for your operating system before continuing.
 
-```bash
-cd PLGPriceCalc
-```
+## Getting Started
 
-3. Start Metro and run the default tests:
+1. Install the JavaScript dependencies:
 
-```bash
-npm test
-npm start
-```
+   ```bash
+   cd PLGPriceCalc
+   npm install
+   ```
 
-The generated project targets mobile platforms by default. Windows-specific files
-could not be generated in this environment, but Metro bundler can still run.
+2. Run the test suite to ensure everything is working:
+
+   ```bash
+   npm test
+   ```
+
+3. Start the Metro bundler in one terminal:
+
+   ```bash
+   npm start
+   ```
+
+4. In a separate terminal you can launch the application. For example:
+
+   ```bash
+   # Android
+   npm run android
+
+   # iOS
+   npm run ios
+   ```
+
+The generated project targets mobile platforms. Windows specific files are not
+included, but Metro bundler and the tests run without them.
+
+For more detailed instructions about modifying and running the app, see the
+README inside the `PLGPriceCalc` directory.
