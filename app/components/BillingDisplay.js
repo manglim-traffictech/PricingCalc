@@ -6,7 +6,7 @@ export default function BillingDisplay({ data }) {
   if (!data) {
     return null;
   }
-  const billAmount = data.highBilling;
+  const billAmount = data.billAmount ?? data.highBilling;
   const profitAmount = billAmount - data.payAmount;
   const profitMargin = billAmount === 0 ? 0 : (profitAmount / billAmount) * 100;
 
