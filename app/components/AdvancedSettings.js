@@ -1,12 +1,10 @@
-import React, { useContext, useRef } from 'react';
-import { View, Text, TextInput, ScrollView, StyleSheet, Button } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
 import MarkupContext from '../context/MarkupContext';
 import theme from '../theme';
 
 export default function AdvancedSettings() {
   const { highRange, lowRange, setHighRange, setLowRange, resetTables, saveTables } = useContext(MarkupContext);
-  const scrollRef = useRef(null);
-  const offsetRef = useRef(0);
 
   const updateRow = (setTable, index, field, value) => {
     const num = parseFloat(value);
@@ -18,24 +16,6 @@ export default function AdvancedSettings() {
     });
   };
 
-  const handleScroll = e => {
-    offsetRef.current = e.nativeEvent.contentOffset.y;
-  };
-
-  const handleWheel = e => {
-    console.log('Wheel event', {
-      deltaY: e?.nativeEvent?.deltaY,
-      offset: offsetRef.current,
-      hasRef: !!scrollRef.current,
-    });
-
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({
-        y: offsetRef.current + e.nativeEvent.deltaY,
-        animated: false,
-      });
-    }
-  };
 
   const renderTable = (title, data, setData, style) => (
     <View style={[styles.tableContainer, style]}>
@@ -47,14 +27,12 @@ export default function AdvancedSettings() {
             keyboardType="numeric"
             value={String(price)}
             onChangeText={text => updateRow(setData, idx, 0, text)}
-            onWheel={handleWheel}
           />
           <TextInput
             style={styles.cell}
             keyboardType="numeric"
             value={String(pct)}
             onChangeText={text => updateRow(setData, idx, 1, text)}
-            onWheel={handleWheel}
           />
         </View>
       ))}
@@ -62,15 +40,7 @@ export default function AdvancedSettings() {
   );
 
   return (
-    <ScrollView
-      testID="advanced-scroll"
-      ref={scrollRef}
-      onScroll={handleScroll}
-      scrollEventThrottle={16}
-      onWheel={handleWheel}
-      style={styles.container}
-      contentContainerStyle={styles.content}
-    >
+    <View style={styles.container}>
       <View style={styles.tablesWrapper}>
         {renderTable('High Range', highRange, setHighRange, { marginRight: 10 })}
         {renderTable('Low Range', lowRange, setLowRange)}
@@ -79,21 +49,20 @@ export default function AdvancedSettings() {
         <Button title="Save" onPress={saveTables} />
         <Button title="Reset" onPress={resetTables} />
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  content: {
     padding: 10,
-    flexGrow: 1,
+    justifyContent: 'space-between',
   },
   tablesWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    flex: 1,
   },
   tableContainer: {
     flex: 1,
