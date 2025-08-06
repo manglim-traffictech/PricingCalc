@@ -45,12 +45,6 @@ export default function AdvancedSettings() {
   };
 
   const handleWheel = e => {
-    console.log('Wheel event', {
-      deltaY: e?.nativeEvent?.deltaY,
-      offset: offsetRef.current,
-      hasRef: !!scrollRef.current,
-    });
-
     if (scrollRef.current) {
       scrollRef.current.scrollTo({
         y: offsetRef.current + e.nativeEvent.deltaY,
