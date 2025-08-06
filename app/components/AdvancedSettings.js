@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { View, Text, TextInput, ScrollView, StyleSheet, Button } from 'react-native';
 import MarkupContext from '../context/MarkupContext';
 import theme from '../theme';
 
 export default function AdvancedSettings() {
   const { highRange, lowRange, setHighRange, setLowRange, resetTables, saveTables } = useContext(MarkupContext);
+  const scrollRef = useRef(null);
+  const offsetRef = useRef(0);
 
   const updateRow = (setTable, index, field, value) => {
     const num = parseFloat(value);
@@ -38,8 +40,29 @@ export default function AdvancedSettings() {
     </View>
   );
 
+  const handleScroll = e => {
+    offsetRef.current = e.nativeEvent.contentOffset.y;
+  };
+
+  const handleWheel = e => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        y: offsetRef.current + e.nativeEvent.deltaY,
+        animated: false,
+      });
+    }
+  };
+
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView
+      testID="advanced-scroll"
+      ref={scrollRef}
+      onScroll={handleScroll}
+      scrollEventThrottle={16}
+      onWheel={handleWheel}
+      style={styles.container}
+      contentContainerStyle={styles.content}
+    >
       <View style={styles.tablesWrapper}>
         {renderTable('High Range', highRange, setHighRange, { marginRight: 10 })}
         {renderTable('Low Range', lowRange, setLowRange)}
