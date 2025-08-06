@@ -16,8 +16,8 @@ export default function AdvancedSettings() {
     });
   };
 
-  const renderTable = (title, data, setData, style) => (
-    <View style={[styles.tableContainer, style]}>
+  const renderTable = (title, data, setData) => (
+    <View style={styles.tableContainer}>
       <Text style={styles.header}>{title}</Text>
       {data.map(([price, pct], idx) => (
         <View key={idx} style={styles.row}>
@@ -40,10 +40,8 @@ export default function AdvancedSettings() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <View style={styles.tablesWrapper}>
-        {renderTable('High Range', highRange, setHighRange, { marginRight: 10 })}
-        {renderTable('Low Range', lowRange, setLowRange)}
-      </View>
+      {renderTable('High Range', highRange, setHighRange)}
+      {renderTable('Low Range', lowRange, setLowRange)}
       <View style={styles.buttonRow}>
         <Button title="Save" onPress={saveTables} />
         <Button title="Reset" onPress={resetTables} />
@@ -58,14 +56,8 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 10,
-    flexGrow: 1,
-  },
-  tablesWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   tableContainer: {
-    flex: 1,
     marginBottom: 20,
   },
   header: {
