@@ -56,7 +56,7 @@ export default function AdvancedSettings() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: 6,
     justifyContent: 'space-between',
   },
   tablesWrapper: {
@@ -66,27 +66,29 @@ const styles = StyleSheet.create({
   },
   tableContainer: {
     flex: 1,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   header: {
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginBottom: 3,
     color: theme.text,
     fontFamily: theme.font,
+    fontSize: 12,
   },
   row: {
     flexDirection: 'row',
-    marginBottom: 5,
+    marginBottom: 3,
   },
   cell: {
     flex: 1,
     borderWidth: 1,
     borderColor: theme.accent,
-    borderRadius: 4,
-    padding: 4,
-    marginRight: 5,
+    borderRadius: 2,
+    padding: 2,
+    marginRight: 3,
     color: theme.text,
     fontFamily: theme.font,
+    fontSize: 12,
   },
   buttonRow: {
     flexDirection: 'row',
