@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import AsyncStorage from '../utils/storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { defaultHighRange, defaultLowRange } from '../utils/markup';
 
 const MarkupContext = createContext();
