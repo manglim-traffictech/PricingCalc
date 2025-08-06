@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import BillingDisplay from './BillingDisplay';
 import { getBillingRange } from '../utils/billing';
 import theme from '../theme';
-import MarkupContext from '../context/MarkupContext';
 
 export default function InputSection() {
   const [payValue, setPayValue] = useState('');
@@ -16,7 +15,6 @@ export default function InputSection() {
     highPercentage: 0,
     lowPercentage: 0,
   });
-  const { highRange, lowRange } = useContext(MarkupContext);
 
   const handleSubmit = () => {
     const payNum = parseFloat(payValue);
@@ -24,7 +22,7 @@ export default function InputSection() {
       return;
     }
     const billNum = parseFloat(billValue);
-    const result = getBillingRange(payNum, highRange, lowRange);
+    const result = getBillingRange(payNum);
     console.log(
       `Markup% High: ${(result.highPercentage * 100).toFixed(2)}%, Low: ${(result.lowPercentage * 100).toFixed(2)}%`
     );
