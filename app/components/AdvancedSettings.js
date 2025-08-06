@@ -18,28 +18,6 @@ export default function AdvancedSettings() {
     });
   };
 
-  const renderTable = (title, data, setData, style) => (
-    <View style={[styles.tableContainer, style]}>
-      <Text style={styles.header}>{title}</Text>
-      {data.map(([price, pct], idx) => (
-        <View key={idx} style={styles.row}>
-          <TextInput
-            style={styles.cell}
-            keyboardType="numeric"
-            value={String(price)}
-            onChangeText={text => updateRow(setData, idx, 0, text)}
-          />
-          <TextInput
-            style={styles.cell}
-            keyboardType="numeric"
-            value={String(pct)}
-            onChangeText={text => updateRow(setData, idx, 1, text)}
-          />
-        </View>
-      ))}
-    </View>
-  );
-
   const handleScroll = e => {
     offsetRef.current = e.nativeEvent.contentOffset.y;
   };
@@ -58,6 +36,30 @@ export default function AdvancedSettings() {
       });
     }
   };
+
+  const renderTable = (title, data, setData, style) => (
+    <View style={[styles.tableContainer, style]}>
+      <Text style={styles.header}>{title}</Text>
+      {data.map(([price, pct], idx) => (
+        <View key={idx} style={styles.row}>
+          <TextInput
+            style={styles.cell}
+            keyboardType="numeric"
+            value={String(price)}
+            onChangeText={text => updateRow(setData, idx, 0, text)}
+            onWheel={handleWheel}
+          />
+          <TextInput
+            style={styles.cell}
+            keyboardType="numeric"
+            value={String(pct)}
+            onChangeText={text => updateRow(setData, idx, 1, text)}
+            onWheel={handleWheel}
+          />
+        </View>
+      ))}
+    </View>
+  );
 
   return (
     <ScrollView
