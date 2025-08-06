@@ -26,3 +26,12 @@ test('shows billing information on initial render', () => {
   const display = screen.getByText(/High Billing Range/i);
   expect(display).toBeTruthy();
 });
+
+test('displays markup percentages after entering pay amount', () => {
+  render(<App />);
+  const input = screen.getByTestId('pay-input');
+  fireEvent.changeText(input, '100');
+  fireEvent(input, 'submitEditing');
+  const markup = screen.getByText('High: 122.50%, Low: 94.75%');
+  expect(markup).toBeTruthy();
+});
