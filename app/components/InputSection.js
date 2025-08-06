@@ -21,6 +21,9 @@ export default function InputSection() {
     }
     const billNum = parseFloat(billValue);
     const result = getBillingRange(payNum);
+    console.log(
+      `Markup% High: ${(result.highPercentage * 100).toFixed(2)}%, Low: ${(result.lowPercentage * 100).toFixed(2)}%`
+    );
     setBillingData({
       ...result,
       billAmount: isNaN(billNum) ? 0 : billNum,
