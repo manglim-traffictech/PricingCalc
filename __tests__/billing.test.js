@@ -1,4 +1,4 @@
-import { getBillingRange } from '../app/utils/billing';
+import { getBillingRange } from '../app/utils/billing.js';
 
 test('calculates billing ranges for pay amount', () => {
   const result = getBillingRange(100);

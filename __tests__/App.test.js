@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react-native';
-import App from '../app/App';
+import App from '../app/App.js';
 
 test('renders pricing calculator title', () => {
   render(<App />);

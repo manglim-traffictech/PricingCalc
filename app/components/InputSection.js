@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import BillingDisplay from './BillingDisplay';
-import { getBillingRange } from '../utils/billing';
-import theme from '../theme';
+import BillingDisplay from './BillingDisplay.js';
+import { getBillingRange } from '../utils/billing.js';
+import theme from '../theme.js';
 
 export default function InputSection() {
   const [payValue, setPayValue] = useState('');
