@@ -50,29 +50,6 @@ npm test
 
 The included test verifies that the main screen renders the "Pricing Calculator" title.
 
-## Building Windows binaries on Linux
-
-Electron Builder can create Windows artifacts from Linux hosts, but it requires Wine, Mono, and a virtual display.
-
-1. **Install Wine and Mono with 32‑bit support**
-   ```bash
-   sudo dpkg --add-architecture i386 && sudo apt-get update
-   sudo apt-get install -y wine64 wine32 libwine libwine:i386 mono-devel
-   wine --version
-   mono --version
-   ```
-2. **Provide a virtual X server** – necessary when running in headless environments.
-   ```bash
-   sudo apt-get install -y xvfb
-   npm run electron:build:linux
-   ```
-   The `electron:build:linux` script wraps `electron-builder` with `xvfb-run`.
-3. **Alternative: build on Windows** – install Node.js and run:
-   ```bash
-   npm install
-   npm run electron:build
-   ```
-
 ## Project Structure
 - `index.js` – default entry file importing `app/index.js`
 - `app/App.js` – React Native component rendered on screen
