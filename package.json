@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "jest",
-    "electron:start": "electron .",
-    "electron:build": "electron-builder --win"
+    "test": "jest"
   },
   "dependencies": {
     "react": "18.2.0",
@@ -14,11 +12,9 @@
   },
   "devDependencies": {
     "@react-native-community/cli": "12.1.1",
-    "@react-native/metro-config": "^0.73.2",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react-native": "^13.2.2",
-    "electron": "^37.2.6",
-    "electron-builder": "^26.0.12",
+    "@react-native/metro-config": "^0.73.2",
     "jest": "^30.0.5",
     "metro-react-native-babel-preset": "^0.77.0",
     "react-test-renderer": "18.2.0"
@@ -28,12 +24,5 @@
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect"
     ]
-  },
-  "main": "electron-main.js",
-  "build": {
-    "appId": "com.pricingcalculatorapp",
-    "win": {
-      "target": "nsis"
-    }
   }
 }
