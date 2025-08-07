@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
-import theme from '../theme';
+import theme from '../theme.js';
 
 export default function PercentageTable({ title }) {
   const values = [1, 5];
