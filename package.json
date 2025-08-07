@@ -6,8 +6,7 @@
     "start": "react-native start",
     "test": "jest",
     "electron:start": "electron .",
-    "electron:build": "electron-builder --win",
-    "electron:build:linux": "xvfb-run -a electron-builder --win"
+    "electron:build": "electron-builder --win"
   },
   "dependencies": {
     "react": "18.2.0",
