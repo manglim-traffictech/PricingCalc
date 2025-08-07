@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, Text, StyleSheet } from 'react-native';
-import theme from '../theme.js';
+import theme from '../theme';
 
 export default function KeypadButton({ label, onPress }) {
   return (

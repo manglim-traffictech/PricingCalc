@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import InputSection from './components/InputSection.js';
-import theme from './theme.js';
+import InputSection from './components/InputSection';
+import theme from './theme';
 
 export default function App() {
   return (
