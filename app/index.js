@@ -1,6 +1,6 @@
 import { AppRegistry } from 'react-native';
 import App from './App.js';
-import appConfig from './app.json' assert { type: 'json' };
+import appConfig from './app.json';
 
 const appName = appConfig.name;
 
