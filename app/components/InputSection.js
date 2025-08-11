@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BillingDisplay from './BillingDisplay';
 import { getBillingRange } from '../utils/billing';
 import theme from '../theme';
@@ -15,7 +15,12 @@ export default function InputSection() {
     lowPercentage: 0,
   });
 
+  useEffect(() => {
+    console.log('InputSection mounted');
+  }, []);
+
   const handleSubmit = () => {
+    console.log('Submitting with payValue:', payValue, 'billValue:', billValue);
     const payNum = parseFloat(payValue);
     if (isNaN(payNum)) {
       return;
