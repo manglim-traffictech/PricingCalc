@@ -3,18 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npx serve .",
+    "start": "node server.js",
     "test": "jest"
   },
   "dependencies": {
+    "express": "^5.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.1",
+    "supertest": "^7.1.4",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
     "jest": "^30.0.5",
     "jest-environment-jsdom": "^30.0.5"
   },
