@@ -17,6 +17,7 @@
     }
   </script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script type="text/babel" data-type="module" data-presets="react" src="./app/index.js"></script>
+  <!-- Use an absolute path so the script loads correctly on nested routes -->
+  <script type="text/babel" data-type="module" data-presets="react" src="/app/index.js"></script>
 </body>
 </html>
