@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import theme from '../theme';
+import theme from '../theme.js';
 
 export default function KeypadButton({ label, onPress }) {
   const [pressed, setPressed] = useState(false);
