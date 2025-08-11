@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import BillingDisplay from './BillingDisplay';
-import { getBillingRange } from '../utils/billing';
-import theme from '../theme';
+import BillingDisplay from './BillingDisplay.js';
+import { getBillingRange } from '../utils/billing.js';
+import theme from '../theme.js';
 
 export default function InputSection() {
   const [payValue, setPayValue] = useState('');

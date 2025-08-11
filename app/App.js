@@ -1,6 +1,6 @@
 import React from 'react';
-import InputSection from './components/InputSection';
-import theme from './theme';
+import InputSection from './components/InputSection.js';
+import theme from './theme.js';
 
 export default function App() {
   return (
