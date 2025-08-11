@@ -1,31 +1,36 @@
-import React from 'react';
-import { Pressable, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
 import theme from '../theme';
 
 export default function KeypadButton({ label, onPress }) {
+  const [pressed, setPressed] = useState(false);
   return (
-    <Pressable
-      style={({ pressed }) => [
-        styles.button,
-        pressed && styles.pressed,
-      ]}
-      onPress={() => onPress(label)}
+    <button
+      style={{
+        ...styles.button,
+        ...(pressed ? styles.pressed : {}),
+      }}
+      onMouseDown={() => setPressed(true)}
+      onMouseUp={() => {
+        setPressed(false);
+        onPress(label);
+      }}
+      onMouseLeave={() => setPressed(false)}
     >
-      <Text style={styles.text}>{label}</Text>
-    </Pressable>
+      <span style={styles.text}>{label}</span>
+    </button>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   button: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: theme.accent,
+    border: `1px solid ${theme.accent}`,
     borderRadius: 4,
-    paddingVertical: 10,
+    padding: '10px 0',
     alignItems: 'center',
-    marginHorizontal: 3,
+    margin: '0 3px',
     backgroundColor: theme.buttonBg,
+    cursor: 'pointer',
   },
   pressed: {
     backgroundColor: theme.buttonPressed,
@@ -35,4 +40,4 @@ const styles = StyleSheet.create({
     color: theme.text,
     fontFamily: theme.font,
   },
-});
+};

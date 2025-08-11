@@ -3,26 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-native start",
+    "start": "npx serve .",
     "test": "jest"
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.73.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@react-native-community/cli": "12.1.1",
-    "@testing-library/jest-native": "^5.4.3",
-    "@testing-library/react-native": "^13.2.2",
-    "@react-native/metro-config": "^0.73.2",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
     "jest": "^30.0.5",
-    "metro-react-native-babel-preset": "^0.77.0",
-    "react-test-renderer": "18.2.0"
+    "jest-environment-jsdom": "^30.0.5"
   },
   "jest": {
-    "preset": "react-native",
+    "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
+      "@testing-library/jest-dom"
     ]
   }
 }

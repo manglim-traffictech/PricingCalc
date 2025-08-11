@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import theme from '../theme';
 
 export default function PercentageTable({ title }) {
@@ -9,23 +8,25 @@ export default function PercentageTable({ title }) {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <ScrollView style={styles.list} contentContainerStyle={styles.content}>
-        {values.map((v) => (
-          <View key={v} style={styles.cell}>
-            <Text>{v}%</Text>
-          </View>
-        ))}
-      </ScrollView>
-    </View>
+    <div style={styles.container}>
+      <span style={styles.title}>{title}</span>
+      <div style={styles.list}>
+        <div style={styles.content}>
+          {values.map((v) => (
+            <div key={v} style={styles.cell}>
+              <span>{v}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     flex: 1,
-    marginHorizontal: 5,
+    margin: '0 5px',
   },
   title: {
     fontWeight: 'bold',
@@ -33,19 +34,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: theme.text,
     fontFamily: theme.font,
+    display: 'block',
   },
   list: {
-    borderWidth: 1,
-    borderColor: theme.accent,
+    border: `1px solid ${theme.accent}`,
     borderRadius: 4,
+    overflowY: 'auto',
+    maxHeight: 200,
   },
   content: {
     padding: 5,
   },
   cell: {
-    paddingVertical: 4,
-    borderBottomWidth: 1,
-    borderColor: '#444',
-    alignItems: 'center',
+    padding: '4px 0',
+    borderBottom: '1px solid #444',
+    textAlign: 'center',
   },
-});
+};

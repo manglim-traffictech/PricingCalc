@@ -1,28 +1,27 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import InputSection from './components/InputSection';
 import theme from './theme';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Pricing Calculator</Text>
-      <View style={styles.row}>
+    <div style={styles.container}>
+      <h1 style={styles.title}>Pricing Calculator</h1>
+      <div style={styles.row}>
         <InputSection />
-      </View>
-    </SafeAreaView>
+      </div>
+    </div>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
-    flex: 1,
     padding: 20,
     backgroundColor: theme.background,
+    minHeight: '100vh',
+    boxSizing: 'border-box',
   },
   row: {
-    flex: 1,
-    flexDirection: 'row',
+    display: 'flex',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
   },
@@ -34,4 +33,4 @@ const styles = StyleSheet.create({
     color: theme.text,
     fontFamily: theme.font,
   },
-});
+};
