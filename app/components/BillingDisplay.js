@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import theme from '../theme';
 
 export default function BillingDisplay({ data }) {
@@ -15,44 +14,44 @@ export default function BillingDisplay({ data }) {
   const format = (n) => n.toFixed(2);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.item}>
-        <Text style={styles.label}>Profit Amount</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(profitAmount)}</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>Profit Margin</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(profitMargin)}%</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>High Billing Range</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(highBilling)}</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>Low Billing Range</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(lowBilling)}</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>Markup% Used</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>
+    <div style={styles.container}>
+      <div style={styles.item}>
+        <span style={styles.label}>Profit Amount</span>
+        <div style={styles.box}>
+          <span style={styles.boxText}>{format(profitAmount)}</span>
+        </div>
+      </div>
+      <div style={styles.item}>
+        <span style={styles.label}>Profit Margin</span>
+        <div style={styles.box}>
+          <span style={styles.boxText}>{format(profitMargin)}%</span>
+        </div>
+      </div>
+      <div style={styles.item}>
+        <span style={styles.label}>High Billing Range</span>
+        <div style={styles.box}>
+          <span style={styles.boxText}>{format(highBilling)}</span>
+        </div>
+      </div>
+      <div style={styles.item}>
+        <span style={styles.label}>Low Billing Range</span>
+        <div style={styles.box}>
+          <span style={styles.boxText}>{format(lowBilling)}</span>
+        </div>
+      </div>
+      <div style={styles.item}>
+        <span style={styles.label}>Markup% Used</span>
+        <div style={styles.box}>
+          <span style={styles.boxText}>
             {`High: ${format(highPercentage * 100)}%, Low: ${format(lowPercentage * 100)}%`}
-          </Text>
-        </View>
-      </View>
-    </View>
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     marginTop: 10,
   },
@@ -63,10 +62,10 @@ const styles = StyleSheet.create({
     color: theme.text,
     marginBottom: 4,
     fontFamily: theme.font,
+    display: 'block',
   },
   box: {
-    borderWidth: 1,
-    borderColor: theme.accent,
+    border: `1px solid ${theme.accent}`,
     borderRadius: 4,
     padding: 8,
   },
@@ -74,4 +73,4 @@ const styles = StyleSheet.create({
     color: theme.text,
     fontFamily: theme.font,
   },
-});
+};

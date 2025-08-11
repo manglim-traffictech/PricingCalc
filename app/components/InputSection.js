@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
 import BillingDisplay from './BillingDisplay';
 import { getBillingRange } from '../utils/billing';
 import theme from '../theme';
@@ -32,53 +31,60 @@ export default function InputSection() {
     });
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Pay Amount</Text>
-      <TextInput
+    <div style={styles.container}>
+      <label style={styles.label} htmlFor="pay-input">Pay Amount</label>
+      <input
+        id="pay-input"
         style={styles.input}
         placeholder="Enter pay amount"
-        placeholderTextColor={theme.accent}
         value={payValue}
-        onChangeText={setPayValue}
-        onSubmitEditing={handleSubmit}
-        keyboardType="numeric"
-        testID="pay-input"
+        onChange={(e) => setPayValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+        inputMode="numeric"
+        data-testid="pay-input"
       />
-      <Text style={styles.label}>Bill Amount</Text>
-      <TextInput
+      <label style={styles.label} htmlFor="bill-input">Bill Amount</label>
+      <input
+        id="bill-input"
         style={styles.input}
         placeholder="Enter bill amount"
-        placeholderTextColor={theme.accent}
         value={billValue}
-        onChangeText={setBillValue}
-        onSubmitEditing={handleSubmit}
-        keyboardType="numeric"
-        testID="bill-input"
+        onChange={(e) => setBillValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+        inputMode="numeric"
+        data-testid="bill-input"
       />
       <BillingDisplay data={billingData} />
-    </View>
+    </div>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     padding: 10,
-    flex: 1,
     backgroundColor: theme.background,
+    flex: 1,
   },
   input: {
-    borderWidth: 1,
-    borderColor: theme.accent,
+    border: `1px solid ${theme.accent}`,
     borderRadius: 4,
     padding: 8,
     marginBottom: 10,
     color: theme.text,
     fontFamily: theme.font,
+    backgroundColor: 'transparent',
   },
   label: {
     color: theme.text,
     marginBottom: 4,
     fontFamily: theme.font,
+    display: 'block',
   },
-});
+};
