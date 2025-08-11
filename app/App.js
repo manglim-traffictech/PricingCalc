@@ -1,14 +1,10 @@
 import React from 'react';
-import InputSection from './components/InputSection.js';
-import theme from './theme.js';
 
 export default function App() {
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>Pricing Calculator</h1>
-      <div style={styles.row}>
-        <InputSection />
-      </div>
+      <h1 style={styles.title}>PLG calculator</h1>
+      <p style={styles.subtitle}>Welcome to the PLG calculator.</p>
     </div>
   );
 }
@@ -16,21 +12,16 @@ export default function App() {
 const styles = {
   container: {
     padding: 20,
-    backgroundColor: theme.background,
-    minHeight: '100vh',
-    boxSizing: 'border-box',
-  },
-  row: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
+    fontFamily: 'sans-serif',
+    textAlign: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-    color: theme.text,
-    fontFamily: theme.font,
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#555',
   },
 };
