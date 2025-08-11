@@ -1,6 +1,6 @@
-# Pricing Calculator
+# PLG calculator
 
-This is a minimal React application that calculates billing and profit information.
+This is a minimal React application with a simple home page titled **PLG calculator**.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ npm install
 ```bash
 npm start
 ```
-The start script uses [`serve`](https://www.npmjs.com/package/serve) to host the project. After the command runs, open [http://localhost:3000](http://localhost:3000) in a web browser to view the Pricing Calculator.
+The start script uses Express to host the project. After the command runs, open [http://localhost:3000](http://localhost:3000) in a web browser to view the PLG calculator.
 
 ### Running tests
 ```bash
@@ -29,14 +29,3 @@ npm test
 - `app/App.js` – main React component
 - `app/index.js` – creates the React root and renders `App`
 - `package.json` – project configuration
-
-## Billing and Profit Display
-
-Enter an amount using the keypad and press **Enter** to calculate billing ranges. The screen will show:
-
-- **Profit Amount**
-- **Profit Margin**
-- **High Billing Range**
-- **Low Billing Range**
-
-These values are always visible. Before entering data they show **0.00** as a placeholder and update each time you submit a new pay amount.
