@@ -27,30 +27,30 @@ export default function InputSection() {
     });
   }, [payValue, billValue]);
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Pay Amount</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter pay amount"
-        placeholderTextColor={theme.accent}
-        value={payValue}
-        onChangeText={setPayValue}
-        keyboardType="numeric"
-        testID="pay-input"
-      />
-      <Text style={styles.label}>Bill Amount</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter bill amount"
-        placeholderTextColor={theme.accent}
-        value={billValue}
-        onChangeText={setBillValue}
-        keyboardType="numeric"
-        testID="bill-input"
-      />
-      <BillingDisplay data={billingData} />
-    </View>
+  return React.createElement(
+    View,
+    { style: styles.container },
+    React.createElement(Text, { style: styles.label }, 'Pay Amount'),
+    React.createElement(TextInput, {
+      style: styles.input,
+      placeholder: 'Enter pay amount',
+      placeholderTextColor: theme.accent,
+      value: payValue,
+      onChangeText: setPayValue,
+      keyboardType: 'numeric',
+      testID: 'pay-input',
+    }),
+    React.createElement(Text, { style: styles.label }, 'Bill Amount'),
+    React.createElement(TextInput, {
+      style: styles.input,
+      placeholder: 'Enter bill amount',
+      placeholderTextColor: theme.accent,
+      value: billValue,
+      onChangeText: setBillValue,
+      keyboardType: 'numeric',
+      testID: 'bill-input',
+    }),
+    React.createElement(BillingDisplay, { data: billingData }),
   );
 }
 
