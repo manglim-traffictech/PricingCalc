@@ -13,39 +13,67 @@ export default function BillingDisplay({ data }) {
 
   const format = (n) => n.toFixed(2);
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.item}>
-        <Text style={styles.label}>Profit Amount</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(profitAmount)}</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>Profit Margin</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(profitMargin)}%</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>High Billing Range</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(highBilling)}</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>Low Billing Range</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(lowBilling)}</Text>
-        </View>
-      </View>
-      <View style={styles.item}>
-        <Text style={styles.label}>Markup% Used</Text>
-        <View style={styles.box}>
-          <Text style={styles.boxText}>{format(markupUsed)}%</Text>
-        </View>
-      </View>
-    </View>
+  return React.createElement(
+    View,
+    { style: styles.container },
+    React.createElement(
+      View,
+      { style: styles.item },
+      React.createElement(Text, { style: styles.label }, 'Profit Amount'),
+      React.createElement(
+        View,
+        { style: styles.box },
+        React.createElement(Text, { style: styles.boxText }, format(profitAmount)),
+      ),
+    ),
+    React.createElement(
+      View,
+      { style: styles.item },
+      React.createElement(Text, { style: styles.label }, 'Profit Margin'),
+      React.createElement(
+        View,
+        { style: styles.box },
+        React.createElement(
+          Text,
+          { style: styles.boxText },
+          `${format(profitMargin)}%`,
+        ),
+      ),
+    ),
+    React.createElement(
+      View,
+      { style: styles.item },
+      React.createElement(Text, { style: styles.label }, 'High Billing Range'),
+      React.createElement(
+        View,
+        { style: styles.box },
+        React.createElement(Text, { style: styles.boxText }, format(highBilling)),
+      ),
+    ),
+    React.createElement(
+      View,
+      { style: styles.item },
+      React.createElement(Text, { style: styles.label }, 'Low Billing Range'),
+      React.createElement(
+        View,
+        { style: styles.box },
+        React.createElement(Text, { style: styles.boxText }, format(lowBilling)),
+      ),
+    ),
+    React.createElement(
+      View,
+      { style: styles.item },
+      React.createElement(Text, { style: styles.label }, 'Markup% Used'),
+      React.createElement(
+        View,
+        { style: styles.box },
+        React.createElement(
+          Text,
+          { style: styles.boxText },
+          `${format(markupUsed)}%`,
+        ),
+      ),
+    ),
   );
 }
 
