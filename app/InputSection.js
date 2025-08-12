@@ -1,4 +1,4 @@
-import React, { useState } from 'https://esm.sh/react@18';
+import React, { useState, useEffect } from 'https://esm.sh/react@18';
 import { View, Text, TextInput, StyleSheet } from 'https://esm.sh/react-native-web@0.19';
 import BillingDisplay from './BillingDisplay.js';
 import { getBillingRange } from '../utils/billing.js';
@@ -12,25 +12,20 @@ export default function InputSection() {
     billAmount: 0,
     highBilling: 0,
     lowBilling: 0,
-    highPercentage: 0,
-    lowPercentage: 0,
   });
 
-  const handleSubmit = () => {
+  useEffect(() => {
     const payNum = parseFloat(payValue);
     if (isNaN(payNum)) {
       return;
     }
     const billNum = parseFloat(billValue);
     const result = getBillingRange(payNum);
-    console.log(
-      `Markup% High: ${(result.highPercentage * 100).toFixed(2)}%, Low: ${(result.lowPercentage * 100).toFixed(2)}%`
-    );
     setBillingData({
       ...result,
       billAmount: isNaN(billNum) ? 0 : billNum,
     });
-  };
+  }, [payValue, billValue]);
 
   return (
     <View style={styles.container}>
@@ -41,7 +36,6 @@ export default function InputSection() {
         placeholderTextColor={theme.accent}
         value={payValue}
         onChangeText={setPayValue}
-        onSubmitEditing={handleSubmit}
         keyboardType="numeric"
         testID="pay-input"
       />
@@ -52,7 +46,6 @@ export default function InputSection() {
         placeholderTextColor={theme.accent}
         value={billValue}
         onChangeText={setBillValue}
-        onSubmitEditing={handleSubmit}
         keyboardType="numeric"
         testID="bill-input"
       />

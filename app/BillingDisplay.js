@@ -7,10 +7,9 @@ export default function BillingDisplay({ data }) {
   const payAmount = data?.payAmount ?? 0;
   const highBilling = data?.highBilling ?? 0;
   const lowBilling = data?.lowBilling ?? 0;
-  const highPercentage = data?.highPercentage ?? 0;
-  const lowPercentage = data?.lowPercentage ?? 0;
   const profitAmount = billAmount - payAmount;
   const profitMargin = billAmount === 0 ? 0 : (profitAmount / billAmount) * 100;
+  const markupUsed = payAmount === 0 ? 0 : ((billAmount / payAmount) - 1) * 100;
 
   const format = (n) => n.toFixed(2);
 
@@ -43,9 +42,7 @@ export default function BillingDisplay({ data }) {
       <View style={styles.item}>
         <Text style={styles.label}>Markup% Used</Text>
         <View style={styles.box}>
-          <Text style={styles.boxText}>
-            {`High: ${format(highPercentage * 100)}%, Low: ${format(lowPercentage * 100)}%`}
-          </Text>
+          <Text style={styles.boxText}>{format(markupUsed)}%</Text>
         </View>
       </View>
     </View>
