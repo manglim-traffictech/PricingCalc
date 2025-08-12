@@ -12,6 +12,8 @@ export default function InputSection() {
     billAmount: 0,
     highBilling: 0,
     lowBilling: 0,
+    highPercentage: 0,
+    lowPercentage: 0,
   });
 
   useEffect(() => {

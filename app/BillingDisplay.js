@@ -9,7 +9,8 @@ export default function BillingDisplay({ data }) {
   const lowBilling = data?.lowBilling ?? 0;
   const profitAmount = billAmount - payAmount;
   const profitMargin = billAmount === 0 ? 0 : (profitAmount / billAmount) * 100;
-  const markupUsed = payAmount === 0 ? 0 : ((billAmount / payAmount) - 1) * 100;
+  const highMarkup = (data?.highPercentage ?? 0) * 100;
+  const lowMarkup = (data?.lowPercentage ?? 0) * 100;
 
   const format = (n) => n.toFixed(2);
 
@@ -70,7 +71,12 @@ export default function BillingDisplay({ data }) {
         React.createElement(
           Text,
           { style: styles.boxText },
-          `${format(markupUsed)}%`,
+          `High: ${format(highMarkup)}%`,
+        ),
+        React.createElement(
+          Text,
+          { style: styles.boxText },
+          `Low: ${format(lowMarkup)}%`,
         ),
       ),
     ),
